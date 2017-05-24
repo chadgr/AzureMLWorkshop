@@ -70,7 +70,7 @@ https://intelligenceworkshop.blob.core.windows.net/workshopfiles/FlightDelaysWit
 
     ![Screenshot](images/importparams.png)
 
-6. If you DID NOT do Task 2 and upload your own data, then repeat steps 4 & 5 using the following file URL's.
+6. If you **DID NOT do Task 2** and upload your own data, then repeat steps 4 & 5 using the following file URL's.
 
 `
 https://intelligenceworkshop.blob.core.windows.net/workshopfiles/FlightWeatherWithAirportCode.csv `
