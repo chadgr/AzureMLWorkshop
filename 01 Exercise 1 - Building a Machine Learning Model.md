@@ -69,43 +69,52 @@ https://intelligenceworkshop.blob.core.windows.net/workshopfiles/FlightDelaysWit
 - **Note:** Be sure to check the 'URI File has a header row' **AND** 'use cached results' boxes
 
     ![Screenshot](images/importparams.png)
- 
-6. Press the run button on the bottom of the screen.  This will connnect to the blob store and import the data.
+
+6. If you DID NOT do Task 2 and upload your own data, then repeat steps 4 & 5 using the following file URL's.
+
+`
+https://intelligenceworkshop.blob.core.windows.net/workshopfiles/FlightWeatherWithAirportCode.csv `
+
+`
+https://intelligenceworkshop.blob.core.windows.net/workshopfiles/AirportCodeLocationLookupClean.csv `
+
+
+7. Press the run button on the bottom of the screen.  This will connnect to the blob store and import the data.
     ![Screenshot](images/Run.png)
     
 - **Note:** You will need to wait a few minutes for the process to pull in all the records.  
 
-6. Next, you will explore each of the datasets to understand what kind of cleanup (aka data munging) will be necessary.
-7. Hover over the output port of the **FlightDelaysWithAirportCodes** dataset.
+8. Next, you will explore each of the datasets to understand what kind of cleanup (aka data munging) will be necessary.
+9. Hover over the output port of the **FlightDelaysWithAirportCodes** dataset.
 
     ![Screenshot](images/start_a_new_experiment_4.png)
 
-8. Right click on the port and select **Visualize**.
+10. Right click on the port and select **Visualize**.
 
     ![Screenshot](images/start_a_new_experiment_5.png)
 
-9. A new dialog will appear showing a maximum of 100 rows by 100 columns sample of the dataset. You can see at the top that the dataset has a total of 2,719,418 rows (also referred to as examples in Machine Learning literature) and has 20 columns (also referred to as features).
+11. A new dialog will appear showing a maximum of 100 rows by 100 columns sample of the dataset. You can see at the top that the dataset has a total of 2,719,418 rows (also referred to as examples in Machine Learning literature) and has 20 columns (also referred to as features).
 
     ![Screenshot](images/start_a_new_experiment_6.png)
 
-10. Because all 20 columns are displayed, you can scroll the grid horizontally. Scroll until you see the **DepDel15** column and click it to view statistics about the column. The **DepDel15** column displays a 1 when the flight was delayed at least 15 minutes and 0 if there was no such delay. In the model you will construct, you will try to predict the value of this column for future data.
+12. Because all 20 columns are displayed, you can scroll the grid horizontally. Scroll until you see the **DepDel15** column and click it to view statistics about the column. The **DepDel15** column displays a 1 when the flight was delayed at least 15 minutes and 0 if there was no such delay. In the model you will construct, you will try to predict the value of this column for future data.
 
     ![Screenshot](images/start_a_new_experiment_7.png)
 
-11. Notice in the Statistics panel that a value of 27444 appears for Missing Values. This means that 27,444 rows do not have a value in this column. Since this value is very important to our model, we will eliminate any rows that do not have a value for this column. In fact, removing these missing values is just one of several "data wrangling" tasks that need to be done. Here is a list of tasks that we will need to do on this dataset before it is ready to be processed by a machine learning algorithm.
+13. Notice in the Statistics panel that a value of 27444 appears for Missing Values. This means that 27,444 rows do not have a value in this column. Since this value is very important to our model, we will eliminate any rows that do not have a value for this column. In fact, removing these missing values is just one of several "data wrangling" tasks that need to be done. Here is a list of tasks that we will need to do on this dataset before it is ready to be processed by a machine learning algorithm.
     1. Remove rows with missing **DepDel15** values.
     1. Create a new column that represents the departure hour. This will be based on the **CRSDepTime** column.
     1. Trim down the list of columns needed to do the analysis at hand.
 
-12. In order to perform the aforementioned data manipulation tasks, you could use built-in Azure ML modules for each task or you could use a script (such as R or Python). Here, you will use R. To do this, add an **Execute R Script** (recall you can search for modules on the left) module beneath the flights dataset and connect the output of the dataset to the first input port (leftmost) of the **Execute R Script**.
+14. In order to perform the aforementioned data manipulation tasks, you could use built-in Azure ML modules for each task or you could use a script (such as R or Python). Here, you will use R. To do this, add an **Execute R Script** (recall you can search for modules on the left) module beneath the flights dataset and connect the output of the dataset to the first input port (leftmost) of the **Execute R Script**.
 
     ![Screenshot](images/ex01_connect_flightdelayswithairportcodes_to_r_module.png)
 
-37. In the **Properties** panel for **Execute R Script**, click the "double window" icon to maximize the script editor.
+15. In the **Properties** panel for **Execute R Script**, click the "double window" icon to maximize the script editor.
 
     ![Screenshot](images/start_a_new_experiment_27.png)
 
-38. Replace the default script with the following and click the checkmark to save it.
+16. Replace the default script with the following and click the checkmark to save it.
 
     ``` R
     ds.flights <- maml.mapInputPort(1)
@@ -122,13 +131,13 @@ https://intelligenceworkshop.blob.core.windows.net/workshopfiles/FlightDelaysWit
     maml.mapOutputPort("ds.flights");
     ```
 
-39. Run the experiment to update the metadata and process the data (this may take a minute or two to complete).
-40. Right click on the leftmost output port of your **Execute R Script** module and select **Visualize**.
-41. Compare the data in this view with the data before it was processed by the R script (recall the list of manipulations above). Verify that the dataset only contains the 8 columns referenced in the R script.
+17. Run the experiment to update the metadata and process the data (this may take a minute or two to complete).
+18. Right click on the leftmost output port of your **Execute R Script** module and select **Visualize**.
+19. Compare the data in this view with the data before it was processed by the R script (recall the list of manipulations above). Verify that the dataset only contains the 8 columns referenced in the R script.
 
     ![Screenshot](images/ex01_data_viz_after_flightdelayswithairportcodes_r_module.png)
 
-42. At this point the Flight Delay Data is prepared, and we turn to preparing the historical weather data.
+20. At this point the Flight Delay Data is prepared, and we turn to preparing the historical weather data.
 
 ## Task 4: Prepare the Weather Data
 
