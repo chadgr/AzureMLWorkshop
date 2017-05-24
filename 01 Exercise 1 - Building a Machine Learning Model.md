@@ -22,7 +22,9 @@ This exercise has 8 tasks:
 
     ![Screenshot](images/choose_ml_workspace.png)
 
-## Task 2: Upload the Sample Datasets
+## Task 2: Upload the Sample Datasets (Optional)
+
+** Note: **  There are two ways to get the datasets.  In this task you can upload your own datafiles.  If you are having difficulty getting the datafiles or uploading them.  You can skip this task and go to Task 3. 
 
 1. Before you begin creating a machine learning experiment, there are three datasets you need to load.
 2. Download the three CSV sample datasets from here: http://aka.ms/awtdata and save AdventureWorksTravelDatasets.zip to your Desktop.
