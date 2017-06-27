@@ -387,25 +387,22 @@ The typical pattern is split the historical data so a portion is shown to the mo
 
 ## Task 8: Deploy Web Service and Note API Information
 
-1. When the experiment is finished running, click **Deploy Web Service [New]** (*not* **[Classic]**). This will launch the web service deployment wizard.
+1. When the experiment is finished running, click **Deploy Web Service [Classic]** (*not* **[new]**). This will create web service deployment.
 
-1. You can leave the default name, select **Create new...** for **Price Plan** and then provide a **Plan Name** value. Finally, under **Monthly Plan Options** select **Standard DevTest**.
-    1. **NOTE:**: If you have already created a DevTest plan, you will not be able to create another one. You can simply select the DevTest plan that was already created from the **Price Plan** dropdown box.
+2. You will be on your web service definition page.  Your unique API key is listed along with Links for the request/response service as well the bactch execution.
 
-    ![Screenshot](images/operationalize_the_experiment_19.png)
+3. Click on each link to see the documention of each service and full URL templates.   You will use these in your applications to call the web service. 
 
-1. Scroll down and click the **Deploy** button. After deployment is completed, you will be taken to the web services **Quick Start** page for your new web service.
+4.  On the main web service informatoin page you will also see links for a web test harness and the Excel examples.
 
-    ![Screenshot](images/operationalize_the_experiment_20.png)
-1. From the **Quick Start** page, click the **Use Web Service** link.
-2. Click the Copy button for the **Primary key**, open a copy of Notepad, and paste the value in the editor.
-2. Click the Copy button for the **Request-Response** link. The URL will look something like the following:
-    * https://ussouthcentral.services.azureml.net/subscriptions/[SOME_GUID]/services/[SOME_OTHER_GUID]/execute?api-version=2.0&format=swagger
-1. The first GUID after subscriptions is your Workspace ID. The second GUID after services is your Service ID.
-2. Copy each of these values into Notepad as well. Make sure you note which GUID is which because you will need these in a later step.
-1. Finally, copy the **Batch Requests** URL to Notepad as well, but make sure to remove the '?' character and everything after it. You should be left with a URL that looks something like the following. Again, make sure to label this as your batch service in your Notepad instance.
-    * https://ussouthcentral.services.azureml.net/subscriptions/[SOME_GUID]/services/[SOME_OTHER_GUID]/jobs
+If you want to use the service in your applications you will need three things:
+ a: Your API Key listed shown on the main web service page.
+ b: Your Workspace ID 
+ c: Your Service ID.
+ 
+ You can get your workspsace ID and your service ID by pulling them out of the example link for the request/response URL.
+ 
+1. Click the link for the **Request-Response**. Your sample POST URL will look something like the following:
+    * https://ussouthcentral.services.azureml.net/workspaces/[SOME_GUID]/services/[SOME_OTHER_GUID]/execute?api-version=2.0&format=swagger
+2. The first GUID after "workspaces" is your Workspace ID. The second GUID after services is your Service ID.
 
-    ![Screenshot](images/operationalize_the_experiment_21.png)
-
-Next Exercise: [Exercise 2 - Setup Azure Data Factory](02 Exercise 2 - Setup Azure Data Factory.md)
