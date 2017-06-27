@@ -142,7 +142,7 @@ https://intelligenceworkshop.blob.core.windows.net/workshopfiles/AirportCodeLoca
 ## Task 4: Prepare the Weather Data
 
 
-1. To the right of the **FlightDelaysWithAirportCodes** dataset, add the **FlightWeatherWithAirportCode** dataset.
+1. To the right of the **FlightDelaysWithAirportCodes** dataset, add the **FlightWeatherWithAirportCode** dataset.  Note: You will have this dataset on the canvas allready from step task 3 if you did the import from blob store.  If you uploaded your own dataset then you can drag it over from the left toolbar.
 
     ![Screenshot](images/prepare_the_weather_data_0.png)
 
