@@ -407,7 +407,12 @@ If you want to use the service in your applications you will need three things:
 2. The first GUID after "workspaces" is your Workspace ID. The second GUID after services is your Service ID.
 
 
-## Acquire Weather Underground API Key
+
+# Task 9: Deploy Intelligent Web App
+
+Synopsis: In this Task, attendees will deploy an intelligent web application to Azure from GitHub. This application leverages the operationalized machine learning model to bring action-oriented insight to an already existing business process.
+
+## Step 1: Acquire Weather Underground API Key
 
 1. To retrieve the 10-day hourly weather forecast, you will use an API from WeatherUnderground.com. There is a free developer version that provides you access to the API you will need for this workshop.
 1. Navigate to https://www.wunderground.com/signup?mode=api_signup and create an account.
@@ -423,4 +428,24 @@ If you want to use the service in your applications you will need three things:
 16.	To verify that your API Key is working, modify this URL to include your API Key: http://api.wunderground.com/api/YOUR_API_KEY_HERE/forecast10day/q/WA/SEA.json.
 17.	Open your modified link in a browser, you should get a JSON result showing the 10-day, hourly weather forecast for the Seattle-Tacoma International Airport.
 
-Thank you for following this setup instruction for the Cortana Intelligence Workshop. We are looking forward to having you at our workshop!!
+
+## Step 2: Deploy Web App from GitHub
+
+1. Navigate to [http://aka.ms/cortanawebdeploy](http://aka.ms/cortanawebdeploy) in your browser of choice, but where you are already authenticated to the Azure Portal.
+2. Read through the README information on the GitHub page.
+3. Click the **Deploy to Azure** button.
+1. On the following page, ensure the correct **Directory** and **Subscription** are selected.
+2. Select the **Resource Group** that you have been using throughout the workshop.
+3. Either keep the default **Site Name** or provide one that is globally unique and then choose a **Site Location**.
+4. Finally, enter the ML API and Weather API information. Recall that you recorded the ML API information back in Task 9 of [Exercise 1](01_Exercise_1_-_Building_a_Machine_Learning_Model.md). Also, recall that you obtained the Weather API key back in the prerequisite steps for the workshop ([http://aka.ms/cortanasetup](http://aka.ms/cortanasetup)).
+5. Click **Next** and on the following screen, click **Deploy**.
+6. The page should begin deploying your application while showing you a status of what is currently happening.
+
+    ![Screenshot](images/deploy_web_app_from_github_1.png)
+1. After a short time, deployment will complete and you will be presented with a link to your newly deployed web application. CTRL+Click to open it in a new tab.
+2. Try a few different combinations of origin, destination, date, and time. The information you are shown are the result of both the ML API you published as well as information retrieved from the Weather Underground API.
+
+    ![Screenshot](images/deploy_web_app_from_github_2.png)
+1. **Congratulations!** You have built and deployed an intelligent system to Azure!
+
+
